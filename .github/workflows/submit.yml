@@ -22,6 +22,6 @@ jobs:
           NAME: "Sai Sumanth Mahipala"
           EMAIL: "saisumanthss.97@gmail.com"
           RESUME_LINK: "https://www.linkedin.com/in/saisumanthmahipala"
-          REPOSITORY_LINK: "hhttps://github.com/smahipala-opexcs/b12-application.git"
+          REPOSITORY_LINK: "https://github.com/smahipala-opexcs/b12-application"
           ACTION_RUN_LINK: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
         run: python submit.py
