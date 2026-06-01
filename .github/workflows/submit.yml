@@ -1,0 +1,27 @@
+name: B12 Application
+
+on:
+  workflow_dispatch:
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Submit Application
+        env:
+          SIGNING_SECRET: ${{ secrets.SIGNING_SECRET }}
+          NAME: "Sai Sumanth Mahipala"
+          EMAIL: "saisumanthss.97@gmail.com"
+          RESUME_LINK: "https://www.linkedin.com/in/saisumanthmahipala/"
+          REPOSITORY_LINK: "hhttps://github.com/smahipala-opexcs/b12-application.git"
+          ACTION_RUN_LINK: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        run: python submit.py
