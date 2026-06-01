@@ -38,7 +38,10 @@ headers = {
 }
 
 response = requests.post(ENDPOINT, data=body, headers=headers, timeout=30)
-response.raise_for_status()
+if not response.ok:
+    print("Status:", response.status_code)
+    print("Response:", response.text)
+    response.raise_for_status()
 
 result = response.json()
 print("Receipt:", result["receipt"])
