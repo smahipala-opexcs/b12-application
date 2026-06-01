@@ -8,6 +8,12 @@ import os
 SIGNING_SECRET = os.environ["SIGNING_SECRET"]
 ENDPOINT = "https://b12.io/apply/submission"
 
+print("NAME:", os.environ.get("NAME"))
+print("EMAIL:", os.environ.get("EMAIL"))
+print("RESUME_LINK:", os.environ.get("RESUME_LINK"))
+print("REPOSITORY_LINK:", os.environ.get("REPOSITORY_LINK"))
+print("ACTION_RUN_LINK:", os.environ.get("ACTION_RUN_LINK"))
+
 payload = {
     "action_run_link": os.environ["ACTION_RUN_LINK"],
     "email": os.environ["EMAIL"],
@@ -36,6 +42,9 @@ headers = {
     "Content-Type": "application/json",
     "X-Signature-256": f"sha256={signature}"
 }
+
+print(body.decode())
+print(headers["X-Signature-256"])
 
 response = requests.post(ENDPOINT, data=body, headers=headers, timeout=30)
 if not response.ok:
